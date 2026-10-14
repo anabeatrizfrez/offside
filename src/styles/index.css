@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+    margin: 0;
+}
+
+.container-app {
+    max-width: 1600px;
+    margin-inline: auto;
+    padding-inline: 96px;
+}
