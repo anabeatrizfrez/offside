@@ -5,7 +5,7 @@ import NewsSection from '@/features/news/components/NewsSection.jsx'
 
 export default function Home() {
   return (
-    <main className="container-app flex flex-col gap-8 mt-8">
+    <main className="container-app flex flex-col gap-8">
       <TodayMatchesSection />
       <NewsSection aside={<StandingsMini subtitle="Série A" />} />
       <CompetitionSection limit={4} />

@@ -23,7 +23,7 @@ export default function NewsSection({ aside }) {
         <NewsFeatured articles={featured} />
       </AsyncContent>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+      <div className="grid grid-cols-1 gap-8 border-t border-gray-200 pt-8 md:grid-cols-5">
         <div className={aside ? 'md:col-span-3' : 'md:col-span-5'}>
           <NewsList articles={rest} />
         </div>
