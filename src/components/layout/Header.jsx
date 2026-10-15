@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 
+import Logo from '@/assets/brand/logo.svg?react'
 import { ExpandableSearch } from '@/components/ui/ExpandableSearch.jsx'
 import { navItems } from '@/data/navItems.js'
 
-import logo from '@/assets/brand/logo.png'
 
 export default function Header() {
   return (
-    <header className="header bg-amber-400">
+    <header className="header bg-bg-primary mb-8">
       <div className="container-app flex justify-between p-4 items-center">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="w-8" />
+          <Logo className="w-8 text-bg-secondary" />
           <h1>Offside</h1>
         </Link>
 
