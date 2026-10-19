@@ -1,5 +1,5 @@
 import { getCalendar, getLeague, getScoreboard } from '@/api/endpoints.js'
-import { competitions } from '@/data/competitions/index.js'
+import { allCompetitions } from '@/data/competitions/index.js'
 
 import { phases } from '../data/phases/index.js'
 import { getLocalLogo, getLogo } from '../utils/logoUtils.js'
@@ -31,7 +31,7 @@ async function buildApiItem(competition) {
     region: league.country?.name ?? competition.region,
     year: getSeason(calendar),
     status: getStatus(scoreboard, calendar, phases),
-    to: `/championship/${competition.slug}`,
+    to: `/competitions/${competition.slug}`,
   }
 }
 
@@ -45,10 +45,17 @@ async function buildItem(competition) {
   }
 }
 
-export function getCompetitionGroups(limit) {
+export function getCompetitionGroups(limit, type) {
+  const isSummary = type !== 'all'
+
+  // resumido: só os primeiros `limit` grupos; completo: todos
+  const groups = isSummary && limit ? allCompetitions.slice(0, limit) : allCompetitions
+
   return Promise.all(
-    competitions.map(async (group) => {
-      const items = await Promise.all(group.competitions.slice(0, limit).map(buildItem))
+    groups.map(async (group) => {
+      // resumido: só `limit` itens por grupo; completo: todos
+      const list = isSummary && limit ? group.competitions.slice(0, limit) : group.competitions
+      const items = await Promise.all(list.map(buildItem))
       return { title: group.title, competitions: items.filter(Boolean) }
     })
   )

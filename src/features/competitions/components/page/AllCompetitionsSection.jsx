@@ -1,14 +1,16 @@
 import AsyncContent from '@/components/ui/AsyncContent.jsx'
+import { useCompetitionGroups } from '@/features/competitions/hooks/useCompetitionGroups.js'
 
-import { useCompetitionGroups } from '../hooks/useCompetitionGroups.js'
 import CompetitionGroup from './CompetitionGroup.jsx'
 
-export default function CompetitionSection({ limit }) {
-  const { data: groups, loading, error } = useCompetitionGroups({ limit })
+export default function AllCompetitionsSection() {
+  const { data: groups, loading, error } = useCompetitionGroups({ type: 'all' })
 
   return (
-    <section className="flex flex-col gap-6 border-t border-black pt-4">
-      <h2 className="text-2xl font-bold">Competições</h2>
+    <section className="flex flex-col gap-6">
+      <div className="flex justify-between items-center wrap">
+        <h2 className="text-2xl font-bold">Competições</h2>
+      </div>
 
       <AsyncContent
         loading={loading}
