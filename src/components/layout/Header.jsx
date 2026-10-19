@@ -4,7 +4,6 @@ import Logo from '@/assets/brand/logo.svg?react'
 import { ExpandableSearch } from '@/components/ui/ExpandableSearch.jsx'
 import { navItems } from '@/data/navItems.js'
 
-
 export default function Header() {
   return (
     <header className="header bg-bg-primary mb-8">
